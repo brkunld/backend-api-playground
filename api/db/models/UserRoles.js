@@ -3,11 +3,7 @@ import mongoose, { version } from "mongoose";
 const schema = mongoose.Schema(
   {
     role_id: { type: mongoose.SchemaTypes.ObjectId, required: true },
-    role_id: { type: mongoose.SchemaTypes.ObjectId, required: true },
-    created_by: {
-      type: mongoose.SchemaTypes.ObjectId,
-      required: true,
-    },
+    user_id: { type: mongoose.SchemaTypes.ObjectId, required: true },
   },
   {
     versionKey: false,
