@@ -2,11 +2,9 @@ import mongoose, { version } from "mongoose";
 
 const schema = mongoose.Schema(
   {
+    name: { type: String, required: true },
     is_active: { type: Boolean, default: true },
-    created_by: {
-      type: mongoose.SchemaTypes.ObjectId,
-      required: true,
-    },
+    created_by: { type: mongoose.SchemaTypes.ObjectId },
   },
   {
     versionKey: false,
@@ -17,7 +15,7 @@ const schema = mongoose.Schema(
   },
 );
 
-class Categories extends mongoose.Model {}
+class Categories extends mongoose.Model { }
 
 schema.loadClass(Categories);
 export default mongoose.model("categories", schema);
