@@ -1,4 +1,5 @@
 import mongoose, { version } from "mongoose";
+import RolePrivileges from "./RolePrivileges.js";
 
 const schema = mongoose.Schema(
   {
@@ -17,7 +18,14 @@ const schema = mongoose.Schema(
   },
 );
 
-class Roles extends mongoose.Model {}
+class Roles extends mongoose.Model {
+  static async deleteOne(query) {
+    if (query._id) {
+      await RolePrivileges.deleteMany({ role_id: query._id });
+    }
+    return super.deleteOne(query);
+  }
+}
 
 schema.loadClass(Roles);
 export default mongoose.model("roles", schema);
